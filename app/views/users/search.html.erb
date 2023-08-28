@@ -1,0 +1,44 @@
+<h1>検索結果</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Height</th>
+      <th>Weight</th>
+      <th>Gender</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @results.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.age %></td>
+        <td><%= user.height %></td>
+        <td><%= user.weight %></td>
+        <td><%= user.gender %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Top', users_path %>
+
+
+<h1>検索結果</h1>
+<table>
+  <thead>
+    <tr>
+      <th><%= sort_link(@q, :name, "Name") %></th>
+      <th><%= sort_link(@q, :age, "Age") %></th>
+      <th><%= sort_link(@q, :height, "Height") %></th>
+      <th><%= sort_link(@q, :weight, "Weight") %></th>
+      <th><%= sort_link(@q, :gender, "Gender") %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
